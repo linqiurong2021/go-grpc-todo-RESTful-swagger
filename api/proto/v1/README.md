@@ -29,6 +29,9 @@ go get -u -v github.com/golang/protobuf/protoc-gen-go
 
 protoc -I /usr/local/include -I .  --go_out=plugins=grpc:. todo-service.proto
 
+# 生成js 并放到 vue项目
+protoc -I /usr/local/include -I .  --js_out=plugins=grpc:../../../ui/todo/src/proto/v1 todo-service.proto
+
 # 生成gw文件
 protoc -I/usr/local/include -I. -I $GOPATH/bin --plugin=protoc-gen-grpc-gateway=$GOPATH/bin/protoc-gen-grpc-gateway  --grpc-gateway_out=logtostderr=true:. *.proto
 
